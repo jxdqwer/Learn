@@ -18,10 +18,10 @@ public class Draw extends RelativeLayout implements Runnable{
 
         OnTouch onTouch = new OnTouch(context,m);
 
-        addView(onTouch,ViewAttributes.w/3,ViewAttributes.h/2);
+        addView(onTouch,ViewAttributes.w/2,ViewAttributes.h);
 
         onTouch.setX(0);
-        onTouch.setY(ViewAttributes.h/2);
+        onTouch.setY(0);
 
         new Thread(this).start();
     }

@@ -1,6 +1,7 @@
 package com.softsum.jxd.learn;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.media.VolumeShaper;
@@ -31,53 +32,36 @@ import java.util.List;
 
 //public class MyRecycleViewAdapter extends RecyclerView.Adapter
 
-public class MainActivity extends AppCompatActivity {
-
-    private List<MyItem> itemList = new ArrayList<>();
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_lagout);
 
-        //ListView
-//        ItemAdapter adapter = new ItemAdapter(MainActivity.this,
-//                R.layout.recycle_son,itemList);
-//        ListView listView = (ListView)findViewById(R.id.recycler_view);
-//        listView.setAdapter(adapter);
-        //RecyclerView
-//                    initMyItem();
-//                    RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
-////        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-////        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//                    StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
-//                    recyclerView.setLayoutManager(layoutManager);
-//                    ItemRecyclerAdapter itemRecyclerAdapter = new ItemRecyclerAdapter(itemList);
-//                    recyclerView.setAdapter(itemRecyclerAdapter);
-
-        ViewAttributes.main = this;
-        getSupportActionBar().hide();
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            //获取屏幕的宽高
-            DisplayMetrics dis = getResources().getDisplayMetrics();
-            ViewAttributes.w = dis.widthPixels;
-            ViewAttributes.h = dis.heightPixels;
-            Log.v("View Width:",String.valueOf(ViewAttributes.w));
-            Log.v("View High:",String.valueOf(ViewAttributes.h));
-            //获取屏幕分辨率和1920*1080的比例 以便适应不同大小的屏幕
-            ViewAttributes.bili = (float) (Math.sqrt(ViewAttributes.w * ViewAttributes.h) / Math.sqrt(1920 * 1080));
-            setContentView(new Draw(this));
-        } else {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);// 横屏
-        }
-
+        Button yaogan1 = (Button)findViewById(R.id.yaogan1);
+        Button meizi = (Button)findViewById(R.id.kanmeizi);
+        yaogan1.setOnClickListener(this);
+        meizi.setOnClickListener(this);
     }
 
-    private void initMyItem(){
-        for (int j=0;j<100;j++){
-            MyItem item = new MyItem("失眠+" + String.valueOf(j),R.drawable.myimage);
-            itemList.add(item);
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.yaogan1:
+                Log.d("onClick", "onClick: yaogan1");
+                intent = new Intent("android.suftsum.activity.YAOGAN1");
+                intent.addCategory("android.suftsum.category.YAOGAN1");
+                startActivity(intent);
+                break;
+            case R.id.kanmeizi:
+                Log.d("onClick", "onClick: kanmeizi");
+                intent = new Intent("android.suftsum.activity.KANMEIZI");
+                intent.addCategory("android.suftsum.category.KANMEIZI");
+                startActivity(intent);
+                break;
+            default:
         }
     }
 }
