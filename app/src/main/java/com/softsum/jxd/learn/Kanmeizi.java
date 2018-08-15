@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.softsum.jxd.learn.kanmeiziRecyc.UrlImage;
 import com.yanzhenjie.nohttp.*;
 import com.yanzhenjie.nohttp.rest.*;
 
@@ -14,6 +15,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+
+import java.util.concurrent.ThreadPoolExecutor;
 
 
 public class Kanmeizi extends AppCompatActivity {
@@ -27,7 +30,14 @@ public class Kanmeizi extends AppCompatActivity {
         setContentView(R.layout.activity_kanmeizi);
         textShow = (TextView) findViewById(R.id.respond);
         meiziImage = (ImageView) findViewById(R.id.meizi_image);
-        httpRequest();
+        //httpRequest();
+        UrlImage.getInstance(this).getImage("http://ww1.sinaimg.cn/large/0065oQSqgy1ftt7g8ntdyj30j60op7dq.jpg",1,
+            new UrlImage.OnFinshListerener() {
+            @Override
+            public void onFinish(boolean sucess ,int what, Bitmap bitmap){
+                meiziImage.setImageBitmap(bitmap);
+            }
+        });
     }
 
     protected void httpRequest(){

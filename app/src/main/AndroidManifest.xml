@@ -25,6 +25,7 @@
         <activity android:name=".Yaogan1">
             <intent-filter>
                 <action android:name="android.suftsum.activity.YAOGAN1" />
+
                 <category android:name="android.suftsum.category.YAOGAN1" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -32,7 +33,15 @@
         <activity android:name=".Kanmeizi">
             <intent-filter>
                 <action android:name="android.suftsum.activity.KANMEIZI" />
+
                 <category android:name="android.suftsum.category.KANMEIZI" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".KanmeiziRecyclerview">
+            <intent-filter>
+                <action android:name="android.suftsum.activity.KANMEIZIRECYC" />
+                <category android:name="android.suftsum.category.KANMEIZIRECYC" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

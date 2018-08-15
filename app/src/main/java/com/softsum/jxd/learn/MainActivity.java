@@ -41,8 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button yaogan1 = (Button)findViewById(R.id.yaogan1);
         Button meizi = (Button)findViewById(R.id.kanmeizi);
+        Button meiziRecyc = (Button)findViewById(R.id.kanmeiziRecyc);
         yaogan1.setOnClickListener(this);
         meizi.setOnClickListener(this);
+        meiziRecyc.setOnClickListener(this);
     }
 
     @Override
@@ -59,6 +61,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("onClick", "onClick: kanmeizi");
                 intent = new Intent("android.suftsum.activity.KANMEIZI");
                 intent.addCategory("android.suftsum.category.KANMEIZI");
+                startActivity(intent);
+                break;
+            case R.id.kanmeiziRecyc:
+                Log.d("onClick", "onClick: kanmeiziRecyc");
+                intent = new Intent("android.suftsum.activity.KANMEIZIRECYC");
+                intent.addCategory("android.suftsum.category.KANMEIZIRECYC");
                 startActivity(intent);
                 break;
             default:
