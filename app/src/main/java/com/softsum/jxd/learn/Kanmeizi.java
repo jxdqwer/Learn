@@ -1,5 +1,6 @@
 package com.softsum.jxd.learn;
 
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,10 +44,35 @@ public class Kanmeizi extends AppCompatActivity {
                 Log.d("httpRequest", "onSucceed: ");
                 String result = response.get();
                 String url = analysisUrl(result);
-                textShow.setText(url);
+                ImageRequest(url);
+                textShow.setText("今天的妹子链接:" + url);
             }
             @Override
             public void onFailed(int what, Response<String> response) {
+                Log.d("httpRequest", "onFailed: ");
+            }
+            @Override
+            public void onFinish(int what) {
+                Log.d("httpRequest", "onFinish: ");
+            }
+        });
+    }
+
+    protected void ImageRequest(String url){
+        RequestQueue queue = NoHttp.newRequestQueue();
+        Request<Bitmap> request = NoHttp.createImageRequest(url, RequestMethod.GET);
+        queue.add(0, request, new OnResponseListener<Bitmap>() {
+            @Override
+            public void onStart(int what) {
+                Log.d("httpRequest", "onStart: ");
+            }
+            @Override
+            public void onSucceed(int what, Response<Bitmap> response) {
+                Log.d("httpRequest", "onSucceed: ");
+                meiziImage.setImageBitmap(response.get());
+            }
+            @Override
+            public void onFailed(int what, Response<Bitmap> response) {
                 Log.d("httpRequest", "onFailed: ");
             }
             @Override
