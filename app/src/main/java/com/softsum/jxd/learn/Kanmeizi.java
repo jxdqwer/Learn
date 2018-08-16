@@ -31,11 +31,13 @@ public class Kanmeizi extends AppCompatActivity {
         textShow = (TextView) findViewById(R.id.respond);
         meiziImage = (ImageView) findViewById(R.id.meizi_image);
         //httpRequest();
-        UrlImage.getInstance(this).getImage("http://ww1.sinaimg.cn/large/0065oQSqgy1ftt7g8ntdyj30j60op7dq.jpg",1,
+        UrlImage.getInstance(this).getImage("http://ww1.sinaimg.cn/large/0065oQSqgy1ftt7g8ntdyj30j60op7dq.jpg",123,
             new UrlImage.OnFinshListerener() {
             @Override
             public void onFinish(boolean sucess ,int what, Bitmap bitmap){
-                meiziImage.setImageBitmap(bitmap);
+                if(what == 123){
+                    meiziImage.setImageBitmap(bitmap);
+                }
             }
         });
     }
