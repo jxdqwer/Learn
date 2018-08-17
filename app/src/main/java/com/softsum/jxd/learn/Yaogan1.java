@@ -59,7 +59,7 @@ public class Yaogan1 extends AppCompatActivity {
 
     private void initMyItem(){
         for (int j=0;j<100;j++){
-            MyItem item = new MyItem("失眠+" + String.valueOf(j),R.drawable.myimage);
+            MyItem item = new MyItem("失眠+" + String.valueOf(j),R.drawable.apple);
             itemList.add(item);
         }
     }

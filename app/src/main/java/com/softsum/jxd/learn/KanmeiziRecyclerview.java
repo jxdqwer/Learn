@@ -3,6 +3,7 @@ package com.softsum.jxd.learn;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
@@ -23,7 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KanmeiziRecyclerview extends Activity {
+public class KanmeiziRecyclerview extends AppCompatActivity {
 
     private MeiziAdapter meiziAdapter;
 
@@ -90,7 +91,7 @@ public class KanmeiziRecyclerview extends Activity {
             JSONArray array = object.getJSONArray("data");
             for (int i = 0; i < array.length() ; i++) {
                 JSONObject sub = array.getJSONObject(i);
-                 urlList.add(sub.getString("url_mobile"));
+                 urlList.add(sub.getString("url"));
             }
         } catch (JSONException e) {
             e.printStackTrace();

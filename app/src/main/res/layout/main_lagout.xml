@@ -22,4 +22,10 @@
         android:id="@+id/kanmeiziRecyc"
         android:text="360壁纸解析" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_navigation_bar_test"
+        android:text="BottomavigationBar测试" />
+
 </LinearLayout> 
