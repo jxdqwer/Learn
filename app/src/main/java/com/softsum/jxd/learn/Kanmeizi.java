@@ -15,7 +15,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
+import java.io.IOException;
 import java.util.concurrent.ThreadPoolExecutor;
 
 
@@ -40,6 +43,20 @@ public class Kanmeizi extends AppCompatActivity {
                 }
             }
         });
+
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    Document doc = Jsoup.connect("http://www.qiushibaike.com/8hr/page/1/").get();
+                    Log.d("HTML內容", doc.toString());
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
     }
 
     protected void httpRequest(){
