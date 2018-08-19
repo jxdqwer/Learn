@@ -7,6 +7,6 @@
         android:id="@+id/home_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tea"/>
+        android:text="Apps"/>
 
 </android.support.constraint.ConstraintLayout>
