@@ -3,9 +3,9 @@ package com.softsum.jxd.learn;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 
 import com.softsum.jxd.learn.kanmeiziRecyc.MeiziAdapter;
 import com.softsum.jxd.learn.kanmeiziRecyc.MeiziBean;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KanmeiziRecyclerview extends Activity {
+public class KanmeiziRecyclerview extends AppCompatActivity {
 
     private MeiziAdapter meiziAdapter;
 
@@ -38,7 +38,7 @@ public class KanmeiziRecyclerview extends Activity {
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.meizi_recycler_view);
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 //        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         meiziAdapter = new MeiziAdapter(recyclerView);
         recyclerView.setAdapter(meiziAdapter);
@@ -48,8 +48,8 @@ public class KanmeiziRecyclerview extends Activity {
 
     private void initMeizi(){
         //妹子图片url
-        String url = "https://gank.io/api/data/%E7%A6%8F%E5%88%A9/20/1";
-//        String url = "http://wallpaper.apc.360.cn/index.php?c=WallPaper&a=getAppsByOrder&order=create_time&start=0&count=20&from=360chrome";
+        //String url = "https://gank.io/api/data/%E7%A6%8F%E5%88%A9/20/1";
+        String url = "http://wallpaper.apc.360.cn/index.php?c=WallPaper&a=getAppsByOrder&order=create_time&start=0&count=20&from=360chrome";
         RequestQueue queue = NoHttp.newRequestQueue();
         Request<String> request = NoHttp.createStringRequest(url, RequestMethod.GET);
         queue.add(0, request, new OnResponseListener<String>() {
@@ -73,22 +73,10 @@ public class KanmeiziRecyclerview extends Activity {
     }
     private List<String> getMeiziUrlList(String json) {
         //妹子api解析
-        List<String> urlList = new ArrayList<>();
-        try {
-            JSONObject object = new JSONObject(json);
-            JSONArray array = object.getJSONArray("results");
-            for (int i = 0; i < array.length() ; i++) {
-                JSONObject sub = array.getJSONObject(i);
-                 urlList.add(sub.getString("url"));
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        //壁纸api解析
 //        List<String> urlList = new ArrayList<>();
 //        try {
 //            JSONObject object = new JSONObject(json);
-//            JSONArray array = object.getJSONArray("data");
+//            JSONArray array = object.getJSONArray("results");
 //            for (int i = 0; i < array.length() ; i++) {
 //                JSONObject sub = array.getJSONObject(i);
 //                 urlList.add(sub.getString("url"));
@@ -96,6 +84,18 @@ public class KanmeiziRecyclerview extends Activity {
 //        } catch (JSONException e) {
 //            e.printStackTrace();
 //        }
+        //壁纸api解析
+        List<String> urlList = new ArrayList<>();
+        try {
+            JSONObject object = new JSONObject(json);
+            JSONArray array = object.getJSONArray("data");
+            for (int i = 0; i < array.length() ; i++) {
+                JSONObject sub = array.getJSONObject(i);
+                 urlList.add(sub.getString("url"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         return urlList;
     }
