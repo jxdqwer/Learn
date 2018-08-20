@@ -1,10 +1,14 @@
 package com.softsum.jxd.learn;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.softsum.jxd.learn.relaxedRead.AppsFragment;
@@ -26,6 +30,28 @@ public class BottomNavigationBarActivity extends AppCompatActivity implements Bo
     private AppsFragment appsFragment;
     private SettingsFragment settingsFragment;
     private TeaFragment teaFragment;
+    Handler handler = new Handler();
+    Runnable update_thread = new Runnable() {
+        @Override
+        public void run() {
+            Log.d(TAG, "run: I am Happy");
+            Message message = new Message();
+            message.what = 123;
+            handlerStop.sendMessage(message);
+        }
+    };
+    
+    final Handler handlerStop = new Handler() {
+        public void handleMessage(Message msg){
+            switch (msg.what){
+                case 123:
+                    Log.d(TAG, "handleMessage: handleStop");
+                    handler.removeCallbacks(update_thread);
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +70,18 @@ public class BottomNavigationBarActivity extends AppCompatActivity implements Bo
                 .setFirstSelectedPosition(lastSelectPosition)
                 .initialise();
         initFragment();
+        handler.post(update_thread);
         //replaceFragment(homeFragment);
         //replaceFragment(new HomeFragment());
-
     }
+
+    private Runnable mythread = new Runnable() {
+        @Override
+        public void run() {
+            Log.d(TAG, "run: mythread run!");
+        }
+    };
+
 
     private void initFragment(){
         fragmentMap = new HashMap<Fragment,Integer>();

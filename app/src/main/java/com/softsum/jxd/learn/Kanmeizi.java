@@ -44,19 +44,8 @@ public class Kanmeizi extends AppCompatActivity {
             }
         });
 
-        new Thread() {
-            @Override
-            public void run() {
-                super.run();
-                try {
-                    Document doc = Jsoup.connect("http://www.qiushibaike.com/8hr/page/1/").get();
-                    Log.d("HTML內容", doc.toString());
-                }
-                catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
+
+
     }
 
     protected void httpRequest(){
