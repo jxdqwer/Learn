@@ -20,7 +20,6 @@ import static android.content.ContentValues.TAG;
 public class QiuShiJsoupThread {
 
     private MyHandler myHandler;
-
     public static class MyHandler extends Handler {
         private WeakReference<Fragment> reference;
         public MyHandler(Fragment fragment) {
