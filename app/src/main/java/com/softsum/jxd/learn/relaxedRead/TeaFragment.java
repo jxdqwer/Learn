@@ -20,6 +20,7 @@ import com.softsum.jxd.learn.tea.TeaRecycleAdapter;
 import static android.content.ContentValues.TAG;
 
 public class TeaFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+    private boolean isVisibleOnhide = false;
     private View view;
     private TeaRecycleAdapter teaRecycleAdapter;
     @Override
@@ -36,16 +37,21 @@ public class TeaFragment extends Fragment implements SwipeRefreshLayout.OnRefres
     }
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            Log.d("TeaFragment", "setUserVisibleHint: Show");
-            //相当于Fragment的onResume
-        } else {
-            Log.d("TeaFragment", "setUserVisibleHint: Hidvel");
-            //相当于Fragment的onPause
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+            if(isVisibleOnhide){
+                Log.d("TeaFragment", "onHide");
+
+            }
+        }
+        else{
+            isVisibleOnhide = true;
+            Log.d("TeaFragment", "onShow");
+
         }
     }
+
 
     @Override
     public void onRefresh() {
