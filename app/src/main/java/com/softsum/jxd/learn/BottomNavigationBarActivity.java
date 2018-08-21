@@ -15,14 +15,7 @@ import com.softsum.jxd.learn.relaxedRead.AppsFragment;
 import com.softsum.jxd.learn.relaxedRead.HomeFragment;
 import com.softsum.jxd.learn.relaxedRead.SettingsFragment;
 import com.softsum.jxd.learn.relaxedRead.TeaFragment;
-import com.softsum.jxd.learn.tea.QiuShiJsoupThread;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -37,18 +30,6 @@ public class BottomNavigationBarActivity extends AppCompatActivity implements Bo
     private AppsFragment appsFragment;
     private SettingsFragment settingsFragment;
     private TeaFragment teaFragment;
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case 0:
-                    //mTestTV.setText("This is handleMessage");//更新UI
-                    break;
-            }
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,38 +49,7 @@ public class BottomNavigationBarActivity extends AppCompatActivity implements Bo
                 .setFirstSelectedPosition(lastSelectPosition)
                 .initialise();
         initFragment();
-        QiuShiJsoupThread thread = new QiuShiJsoupThread();
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    try {
-//                        Document mozilla = Jsoup.connect("http://www.qiushibaike.com/8hr/page/1/").userAgent("Mozilla")
-//                                .timeout(3000)
-//                                .post();
-//
-//                        Elements select1 = mozilla.select("div.author.clearfix");
-//                        for (Element element : select1) {
-//                            Document parse = Jsoup.parse(element.toString());
-//                            Elements select = parse.select("a h2");
-//                            Elements select2 = parse.select("a img");
-//                            Log.d("QiuShiJsoupThread","element 名字："+select.text());
-//                            Log.d("QiuShiJsoupThread","element 头像："+select2.attr("src"));
-//                        }
-//
-//
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                    Thread.sleep(1000);//在子线程有一段耗时操作,比如请求网络
-//                    mHandler.sendEmptyMessage(0);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }).start();
-        //replaceFragment(homeFragment);
-        //replaceFragment(new HomeFragment());
+
     }
 
     private Runnable mythread = new Runnable() {

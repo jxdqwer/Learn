@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.softsum.jxd.learn.R;
 import com.softsum.jxd.learn.kanmeiziRecyc.MeiziAdapter;
+import com.softsum.jxd.learn.tea.QiuShiJsoupThread;
 import com.softsum.jxd.learn.tea.TeaBean;
 import com.softsum.jxd.learn.tea.TeaRecycleAdapter;
 
@@ -47,8 +48,8 @@ public class TeaFragment extends Fragment implements SwipeRefreshLayout.OnRefres
         }
         else{
             isVisibleOnhide = true;
+            QiuShiJsoupThread thread = new QiuShiJsoupThread(this);
             Log.d("TeaFragment", "onShow");
-
         }
     }
 

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import org.jsoup.Jsoup;
@@ -17,20 +18,32 @@ import java.lang.ref.WeakReference;
 import static android.content.ContentValues.TAG;
 
 public class QiuShiJsoupThread {
-    private Handler mHandler;
 
-    public QiuShiJsoupThread(){
-        Handler mHandler = new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
+    private MyHandler myHandler;
+
+    public static class MyHandler extends Handler {
+        private WeakReference<Fragment> reference;
+        public MyHandler(Fragment fragment) {
+            reference = new WeakReference<Fragment>(fragment);
+        }
+        @Override
+        public void handleMessage(Message msg) {
+            if (reference.get() != null) {
                 switch (msg.what) {
                     case 123:
-                        Log.d(TAG, "run: I am a Handler");
+                        Log.d(TAG, "handleMessage: 123");
+                        break;
+                    default:
+                        // do something...
                         break;
                 }
             }
-        };
+        }
+    }
+
+
+    public QiuShiJsoupThread(Fragment fragment){
+        myHandler = new MyHandler(fragment);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -56,10 +69,10 @@ public class QiuShiJsoupThread {
                     }
 
                     Thread.sleep(1000);//在子线程有一段耗时操作,比如请求网络
-                    mHandler.post(new Runnable() {
+                    myHandler.post(new Runnable() {
                         @Override
                         public void run() {
-                            mHandler.sendEmptyMessage(123);
+                            myHandler.sendEmptyMessage(123);
                             Log.d(TAG, "run: I am a thread");
                         }
                     });
