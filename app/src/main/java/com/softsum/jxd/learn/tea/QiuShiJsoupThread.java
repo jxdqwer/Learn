@@ -49,19 +49,38 @@ public class QiuShiJsoupThread {
                 try {
 
                     try {
-                        Document mozilla = Jsoup.connect("http://www.qiushibaike.com/8hr/page/1/").userAgent("Mozilla")
+                        Document doc = Jsoup.connect("http://www.qiushibaike.com/8hr/page/1/").userAgent("Mozilla")
                                 .timeout(3000)
                                 .post();
+                        Elements els = doc.select("a.contentHerf");
+                        Log.i("一、HTML內容", els.toString());
 
-                        Elements select1 = mozilla.select("div.author.clearfix");
-                        for (Element element : select1) {
-                            Document parse = Jsoup.parse(element.toString());
-                            Elements select = parse.select("a h2");
-                            Elements select2 = parse.select("a img");
-                            Log.d("QiuShiJsoupThread","element 名字："+select.text());
-                            Log.d("QiuShiJsoupThread","element 头像："+select2.attr("src"));
+                        for (int i = 0; i < els.size(); i++) {
+                            Element el = els.get(i);
+                            Log.i("1.标题", el.text());
+
+                            String href = el.attr("href");
+                            Log.i("2.链接", href);
+
+                            Document doc_detail = Jsoup.connect("http://www.qiushibaike.com" + href).get();
+
+                            Elements els_detail = doc_detail.select(".content");
+                            Log.i("3.內容", els_detail.text());
+
+                            Elements auth_detail = doc_detail.select("div.author.clearfix");
+                            Elements select = auth_detail.select("a h2");
+                            Log.i(TAG,"5、名字："+select.text());
+                            Elements select2 = auth_detail.select("a img");
+                            Log.i(TAG,"6、头像链接："+select2.attr("src"));
+
+                            Elements els_pic = doc_detail.select(".thumb img[src$=jpg]");
+                            if (!els_pic.isEmpty()) {
+                                String pic = els_pic.attr("src");
+                                Log.i("4.图片连接", "" + pic);
+                            } else {
+                                Log.i("4.图片连接", "无");
+                            }
                         }
-
 
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -80,7 +99,6 @@ public class QiuShiJsoupThread {
                 }
             }
         }).start();
-
     }
     public interface OnFinshListerener {
         public void onFinish(boolean sucess ,int what);
