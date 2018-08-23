@@ -18,6 +18,9 @@ import com.softsum.jxd.learn.tea.QiuShiJsoupThread;
 import com.softsum.jxd.learn.tea.TeaBean;
 import com.softsum.jxd.learn.tea.TeaRecycleAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.content.ContentValues.TAG;
 
 public class TeaFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
@@ -48,7 +51,15 @@ public class TeaFragment extends Fragment implements SwipeRefreshLayout.OnRefres
         }
         else{
             isVisibleOnhide = true;
-            QiuShiJsoupThread thread = new QiuShiJsoupThread(this);
+            QiuShiJsoupThread thread = new QiuShiJsoupThread(this,teaRecycleAdapter,new QiuShiJsoupThread.OnFinshListener(){
+                @Override
+                public void onFinish(TeaBean bean){
+                    
+                    Log.d(TAG, bean.getTitle());
+                }
+            });
+
+
             Log.d("TeaFragment", "onShow");
         }
     }

@@ -1,5 +1,6 @@
 package com.softsum.jxd.learn.tea;
 
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -44,14 +45,12 @@ public class TeaRecycleAdapter extends RecyclerView.Adapter<TeaRecycleAdapter.Vi
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                StaggeredGridLayoutManager layoutManager = (StaggeredGridLayoutManager) recyclerView.getLayoutManager();
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
                 int itemCount = layoutManager.getItemCount();
-                int[] topbenchmark = {0,0,0};
-                int[] topPosition = layoutManager.findFirstVisibleItemPositions(topbenchmark);
-                int[] endbenchmark = {0,0,0};
-                int[] endPosition = layoutManager.findLastCompletelyVisibleItemPositions(endbenchmark);
-                Log.d("Top Position --> ", topPosition[0] + ":" + topPosition[1] + ":" + topPosition[2]);
-                Log.d("End Position --> ", endPosition[0] + ":" + endPosition[1] + ":" + endPosition[2]);
+                int topPosition = layoutManager.findFirstVisibleItemPosition();
+                int endPosition = layoutManager.findLastCompletelyVisibleItemPosition();
+                Log.d("Top Position --> ", String.valueOf(topPosition));
+                Log.d("End Position --> ", String.valueOf(endPosition));
                 Log.d("itemCount  --> ", itemCount + " ");
             }
         });
@@ -84,7 +83,7 @@ public class TeaRecycleAdapter extends RecyclerView.Adapter<TeaRecycleAdapter.Vi
     @Override
     public void onBindViewHolder(TeaRecycleAdapter.ViewHolder holder, int position){
         TeaBean baen = mTeaBeanList.get(position);
-        holder.itemAuthorImg.setImageBitmap(baen.getAuthorImg());
+        //holder.itemAuthorImg.setImageBitmap(baen.getAuthorImg());
         holder.itemAuthor.setText(baen.getAuthor());
     }
 

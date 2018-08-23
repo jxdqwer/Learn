@@ -5,10 +5,22 @@ import android.graphics.Bitmap;
 import java.util.List;
 
 public class TeaBean {
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    //url
+    private String url;
     //作者
     private String author;
     //正文
     private String text;
+    //标题
+    private String title;
     //作者头像
     private Bitmap authorImg;
     //作者头像链接
@@ -16,7 +28,7 @@ public class TeaBean {
     //正文图片
     private Bitmap image;
     //正文图片链接
-    private Bitmap imageUrl;
+    private String imageUrl;
     //点赞数量
     private String upvote;
     //评论
@@ -70,11 +82,15 @@ public class TeaBean {
         this.commentList = commentList;
     }
 
-    public Bitmap getImageUrl() { return imageUrl; }
+    public String getImageUrl() { return imageUrl; }
 
-    public void setImageUrl(Bitmap imageUrl) { this.imageUrl = imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 
     public String getAuthorImgUrl() { return authorImgUrl; }
 
     public void setAuthorImgUrl(String authorImgUrl) { this.authorImgUrl = authorImgUrl; }
+
+    public String getTitle() { return title; }
+
+    public void setTitle(String title) { this.title = title; }
 }
