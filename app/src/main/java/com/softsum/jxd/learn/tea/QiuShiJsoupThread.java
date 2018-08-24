@@ -1,12 +1,16 @@
 package com.softsum.jxd.learn.tea;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+
+import com.softsum.jxd.learn.kanmeiziRecyc.MeiziBean;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -21,12 +25,14 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 public class QiuShiJsoupThread {
-    OnFinshListener callback;
+    OnFinishListener callback;
     private MyHandler myHandler;
-
     public static class MyHandler extends Handler {
+        private static Fragment fragment;
+        private static  int  index =0;
         private WeakReference<Fragment> reference;
         TeaRecycleAdapter mAdapter;
+
         public MyHandler(Fragment fragment , TeaRecycleAdapter adapter) {
             reference = new WeakReference<Fragment>(fragment);
             mAdapter = adapter;
@@ -37,8 +43,19 @@ public class QiuShiJsoupThread {
                 switch (msg.what) {
                     case 0x1625:
                         ArrayList data = msg.getData().getParcelableArrayList("data");
+                        assert data != null;
                         TeaBean bean = (TeaBean) data.get(0);
-                        mAdapter.addItem(0,bean);
+                        index = ImgRequestHelp.getInstance(fragment.getActivity()).getImage(bean.getAuthorImgUrl(),
+                                new ImgRequestHelp.OnFinishListener() {
+                                    @Override
+                                    public void onFinish(boolean success ,int what, Bitmap bitmap){
+                                        if (what == index){
+                                            bean.setAuthorImg(bitmap);
+                                            mAdapter.addItem(0,bean);
+                                        }
+                                    }
+                                });
+
                         Log.d(TAG, bean.getTitle());
                         break;
                     default:
@@ -49,8 +66,9 @@ public class QiuShiJsoupThread {
         }
     }
 
-    public QiuShiJsoupThread(Fragment fragment,TeaRecycleAdapter adapter ,OnFinshListener onFinshListener){
-        callback = onFinshListener;
+    public QiuShiJsoupThread(Fragment fragment,TeaRecycleAdapter adapter ,OnFinishListener onFinishListener){
+        callback = onFinishListener;
+        MyHandler.fragment = fragment;
         myHandler = new MyHandler(fragment, adapter);
         new Thread(new Runnable() {
             @Override
@@ -117,7 +135,7 @@ public class QiuShiJsoupThread {
             }
         }).start();
     }
-    public interface OnFinshListener {
+    public interface OnFinishListener {
         public void onFinish(TeaBean beans);
     }
 

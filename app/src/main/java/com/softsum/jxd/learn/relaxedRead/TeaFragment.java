@@ -51,7 +51,7 @@ public class TeaFragment extends Fragment implements SwipeRefreshLayout.OnRefres
         }
         else{
             isVisibleOnhide = true;
-            QiuShiJsoupThread thread = new QiuShiJsoupThread(this,teaRecycleAdapter,new QiuShiJsoupThread.OnFinshListener(){
+            QiuShiJsoupThread thread = new QiuShiJsoupThread(this,teaRecycleAdapter,new QiuShiJsoupThread.OnFinishListener(){
                 @Override
                 public void onFinish(TeaBean bean){
                     

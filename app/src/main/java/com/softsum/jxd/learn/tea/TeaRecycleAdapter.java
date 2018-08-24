@@ -82,9 +82,11 @@ public class TeaRecycleAdapter extends RecyclerView.Adapter<TeaRecycleAdapter.Vi
     }
     @Override
     public void onBindViewHolder(TeaRecycleAdapter.ViewHolder holder, int position){
-        TeaBean baen = mTeaBeanList.get(position);
-        //holder.itemAuthorImg.setImageBitmap(baen.getAuthorImg());
-        holder.itemAuthor.setText(baen.getAuthor());
+        TeaBean bean = mTeaBeanList.get(position);
+        holder.itemAuthorImg.setImageBitmap(bean.getAuthorImg());
+        holder.itemAuthor.setText(bean.getAuthor());
+//        holder.itemAuthorImg.setImageResource(R.drawable.apple);
+        holder.itemText.setText(bean.getTitle());
     }
 
     public synchronized void addItem(int position,TeaBean baen){

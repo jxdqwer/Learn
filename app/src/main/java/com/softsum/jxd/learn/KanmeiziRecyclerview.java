@@ -110,7 +110,6 @@ public class KanmeiziRecyclerview extends AppCompatActivity {
                             meiziAdapter.addItem(what,bean);
                         }
                     });
-
         }
     }
 }
