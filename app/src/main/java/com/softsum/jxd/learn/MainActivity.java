@@ -18,10 +18,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button meizi = (Button)findViewById(R.id.kanmeizi);
         Button meiziRecyc = (Button)findViewById(R.id.kanmeiziRecyc);
         Button bottomNBAR = (Button)findViewById(R.id.bottom_navigation_bar_test);
+        Button bottomDex = (Button)findViewById(R.id.bottom_dex_test);
+        Button bottomFile = (Button)findViewById(R.id.bottom_file_test);
+        Button bottomJni = (Button)findViewById(R.id.bottom_jni_test);
         yaogan1.setOnClickListener(this);
         meizi.setOnClickListener(this);
         meiziRecyc.setOnClickListener(this);
         bottomNBAR.setOnClickListener(this);
+        bottomDex.setOnClickListener(this);
+        bottomFile.setOnClickListener(this);
+        bottomJni.setOnClickListener(this);
     }
 
     @Override
@@ -50,6 +56,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("onClick", "onClick: bottom_navigation_bar_test");
                 intent = new Intent("android.suftsum.activity.BOOTOM_N_B");
                 intent.addCategory("android.suftsum.category.BOOTOM_N_B");
+                startActivity(intent);
+                break;
+            case R.id.bottom_dex_test:
+                Log.d("onClick", "onClick: bottom_dex_test");
+                intent = new Intent("android.suftsum.activity.DEX_TEST");
+                intent.addCategory("android.suftsum.category.DEX_TEST");
+                startActivity(intent);
+                break;
+            case R.id.bottom_file_test:
+                Log.d("onClick", "onClick: bottom_file_test");
+                intent = new Intent("android.suftsum.activity.FILE_TEST");
+                intent.addCategory("android.suftsum.category.FILE_TEST");
+                startActivity(intent);
+                break;
+            case R.id.bottom_jni_test:
+                Log.d("onClick", "onClick: bottom_jni_test");
+                intent = new Intent("android.suftsum.activity.JNI_TEST");
+                intent.addCategory("android.suftsum.category.JNI_TEST");
                 startActivity(intent);
                 break;
             default:

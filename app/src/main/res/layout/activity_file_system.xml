@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/file_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/file_button_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="新建文件"/>
+
+    <Button
+        android:id="@+id/file_button_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="读取文件"/>
+
+    <Button
+        android:id="@+id/file_button_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="文件列表"/>
+
+    <Button
+        android:id="@+id/file_button_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="删除文件"/>
+
+    <TextView
+        android:id="@+id/file_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
+
+
+</LinearLayout>

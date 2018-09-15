@@ -28,4 +28,22 @@
         android:id="@+id/bottom_navigation_bar_test"
         android:text="BottomavigationBar测试" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_dex_test"
+        android:text="Dex动态加载测试" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_file_test"
+        android:text="文件系统测试" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_jni_test"
+        android:text="Jni测试" />
+
 </LinearLayout> 

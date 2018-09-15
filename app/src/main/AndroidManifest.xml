@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,12 +48,39 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".BottomNavigationBarActivity"
+        <activity
+            android:name=".BottomNavigationBarActivity"
             android:label="@string/title"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.suftsum.activity.BOOTOM_N_B" />
+
                 <category android:name="android.suftsum.category.BOOTOM_N_B" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DynamicDex">
+            <intent-filter>
+                <action android:name="android.suftsum.activity.DEX_TEST" />
+
+                <category android:name="android.suftsum.category.DEX_TEST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".FileSystemTese.FileSystemActivity">
+            <intent-filter>
+                <action android:name="android.suftsum.activity.FILE_TEST" />
+
+                <category android:name="android.suftsum.category.FILE_TEST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".jniTest.JniTestActivity">
+            <intent-filter>
+                <action android:name="android.suftsum.activity.JNI_TEST" />
+
+                <category android:name="android.suftsum.category.JNI_TEST" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

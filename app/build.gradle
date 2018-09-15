@@ -9,6 +9,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -19,6 +20,11 @@ android {
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8
+    }
+    externalNativeBuild {
+        ndkBuild {
+            path 'src/main/jni/Android.mk'
+        }
     }
 }
 
@@ -31,7 +37,28 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation  'com.yanzhenjie.nohttp:nohttp:1.1.1'
+    implementation 'com.yanzhenjie.nohttp:nohttp:1.1.1'
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.0.4'
     implementation 'org.jsoup:jsoup:1.11.3'
 }
+
+
+task clearJar(type: Delete) {
+    delete 'libs/dynamic.jar'
+}
+
+task makeJar(type: org.gradle.api.tasks.bundling.Jar) {
+
+    baseName 'dynamic'
+
+    from('build/intermediates/classes/debug/com/softsum/jxd/learn/dynamic/')
+
+    into('com/softsum/jxd/learn/dynamic/')
+
+    exclude('DynamicTestIn.class')
+
+    exclude { it.name.startsWith('R$'); }
+
+}
+
+makeJar.dependsOn(clearJar, build)
