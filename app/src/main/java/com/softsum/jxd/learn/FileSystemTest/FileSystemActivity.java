@@ -1,4 +1,4 @@
-package com.softsum.jxd.learn.FileSystemTese;
+package com.softsum.jxd.learn.FileSystemTest;
 
 import android.content.Context;
 import android.os.Bundle;
