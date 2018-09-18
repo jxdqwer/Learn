@@ -14,19 +14,19 @@ import dagger.Provides;
 @Module
 public class CheckVersionModule {
 
-    private CheckVersionContract.IView mILoginView;
+    private CheckVersionContract.ICheckVersionView mICheckVersionView;
 
-    public Login1Module(CheckVersionContract.ILoginView ILoginView) {
-        mILoginView = ILoginView;
+    public CheckVersionModule(CheckVersionContract.ICheckVersionView ICheckVersionView) {
+        mICheckVersionView = ICheckVersionView;
     }
 
     @Provides
-    CheckVersionContract.ILoginView getView() {
-        return mILoginView;
+    CheckVersionContract.ICheckVersionView getView() {
+        return mICheckVersionView;
     }
 
     @Provides
-    CheckVersionContract.ILoginModel getModel(CheckVersionModel model) {
+    CheckVersionContract.ICheckVersionModel getModel(CheckVersionModel model) {
         return model;
     }
 }

@@ -1,5 +1,7 @@
 package com.softsum.jxd.learn.degger2Test;
 
+import android.os.Handler;
+
 import cn.softsum.base.BaseModel;
 import cn.softsum.base.BaseView;
 
@@ -8,23 +10,25 @@ import cn.softsum.base.BaseView;
  * @date 2018/9/17-16:50
  * @blog www.softsum.cn
  */
-public class CheckVersionContract {
-    interface ICheckVersionModel extends BaseModel{
+public interface CheckVersionContract {
+    public interface ICheckVersionModel extends BaseModel{
 
-        void checkVersion(String url,String cul);
+        void checkVersion(Handler handler,String url, String currVersion,OnCheckVersionListener checkVersionListener);
     }
 
     interface ICheckVersionView extends BaseView{
 
-        void showVersion();
+        void showVersion(String version);
 
         void showLoading();
 
         void hideLoading();
 
+        String getSerUrl();
+
     }
 
-    interface OnCheckVersion {
+    interface OnCheckVersionListener {
 
         void getRemoteVersionSuccess(String data);
 
