@@ -7,7 +7,7 @@ import android.content.Context;
  * @date 2018/8/30-16:28
  * @blog www.softsum.cn
  */
-public class BasePresenter<M extends BaseModel, V extends BaseView> implements IPresenter {
+public abstract class BasePresenter<M extends BaseModel, V extends BaseView> implements IPresenter {
 
 
     protected M mModel;
