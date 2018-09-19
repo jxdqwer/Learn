@@ -20,12 +20,14 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".Yaogan1">
             <intent-filter>
                 <action android:name="android.suftsum.activity.YAOGAN1" />
+
                 <category android:name="android.suftsum.category.YAOGAN1" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -33,6 +35,7 @@
         <activity android:name=".Kanmeizi">
             <intent-filter>
                 <action android:name="android.suftsum.activity.KANMEIZI" />
+
                 <category android:name="android.suftsum.category.KANMEIZI" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -40,6 +43,7 @@
         <activity android:name=".KanmeiziRecyclerview">
             <intent-filter>
                 <action android:name="android.suftsum.activity.KANMEIZIRECYC" />
+
                 <category android:name="android.suftsum.category.KANMEIZIRECYC" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -50,6 +54,7 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.suftsum.activity.BOOTOM_N_B" />
+
                 <category android:name="android.suftsum.category.BOOTOM_N_B" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -57,6 +62,7 @@
         <activity android:name=".DynamicDex">
             <intent-filter>
                 <action android:name="android.suftsum.activity.DEX_TEST" />
+
                 <category android:name="android.suftsum.category.DEX_TEST" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -72,6 +78,7 @@
         <activity android:name=".jniTest.JniTestActivity">
             <intent-filter>
                 <action android:name="android.suftsum.activity.JNI_TEST" />
+
                 <category android:name="android.suftsum.category.JNI_TEST" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -79,7 +86,16 @@
         <activity android:name=".degger2Test.DeggerTestActivity">
             <intent-filter>
                 <action android:name="android.suftsum.activity.DEGGER_TEST" />
+
                 <category android:name="android.suftsum.category.DEGGER_TEST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SensorsTest.SensorsTestActivity">
+            <intent-filter>
+                <action android:name="android.suftsum.activity.SENSORS_TEST" />
+
+                <category android:name="android.suftsum.category.SENSORS_TEST" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

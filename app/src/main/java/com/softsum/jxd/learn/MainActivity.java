@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button bottomFile = findViewById(R.id.bottom_file_test);
         Button bottomJni = findViewById(R.id.bottom_jni_test);
         Button bottomDegger = findViewById(R.id.bottom_degger_test);
+        Button buttonSensors = findViewById(R.id.bottom_sensors_test);
         yaogan1.setOnClickListener(this);
         meizi.setOnClickListener(this);
         meiziRecyc.setOnClickListener(this);
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bottomFile.setOnClickListener(this);
         bottomJni.setOnClickListener(this);
         bottomDegger.setOnClickListener(this);
+        buttonSensors.setOnClickListener(this);
     }
 
     @Override
@@ -82,6 +84,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("onClick", "onClick: bottom_degger_test");
                 intent = new Intent("android.suftsum.activity.DEGGER_TEST");
                 intent.addCategory("android.suftsum.category.DEGGER_TEST");
+                startActivity(intent);
+                break;
+            case R.id.bottom_sensors_test:
+                Log.d("onClick", "onClick: bottom_sensors_test");
+                intent = new Intent("android.suftsum.activity.SENSORS_TEST");
+                intent.addCategory("android.suftsum.category.SENSORS_TEST");
                 startActivity(intent);
                 break;
             default:

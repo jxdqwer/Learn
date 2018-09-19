@@ -8,19 +8,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/yaogan1"
-        android:text="启动摇杆1" />
+        android:text="摇杆测试" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/kanmeizi"
-        android:text="gank.io资源" />
+        android:text="NoHttp测试" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/kanmeiziRecyc"
-        android:text="360壁纸解析" />
+        android:text="RecycleView测试" />
 
     <Button
         android:layout_width="match_parent"
@@ -32,13 +32,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bottom_dex_test"
-        android:text="Dex动态加载测试" />
+        android:text="Dynamic测试" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bottom_file_test"
-        android:text="文件系统测试" />
+        android:text="FileOperation测试" />
 
     <Button
         android:layout_width="match_parent"
@@ -50,6 +50,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bottom_degger_test"
-        android:text="Degger测试" />
+        android:text="Degger2测试" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_sensors_test"
+        android:text="Sensors测试" />
 
 </LinearLayout> 
