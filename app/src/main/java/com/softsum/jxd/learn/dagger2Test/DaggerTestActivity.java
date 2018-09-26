@@ -1,8 +1,7 @@
-package com.softsum.jxd.learn.degger2Test;
+package com.softsum.jxd.learn.dagger2Test;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,13 +10,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.softsum.jxd.learn.R;
-import com.softsum.jxd.learn.degger2Test.di.CheckVersionModule;
-import com.softsum.jxd.learn.degger2Test.di.DaggerCheckVersionComponent;
+import com.softsum.jxd.learn.dagger2Test.daggerDemo.Eat;
+import com.softsum.jxd.learn.dagger2Test.daggerDemo.Human;
+import com.softsum.jxd.learn.dagger2Test.di.CheckVersionModule;
+import com.softsum.jxd.learn.dagger2Test.di.DaggerCheckVersionComponent;
 import com.yanzhenjie.nohttp.NoHttp;
+
+import javax.inject.Inject;
 
 import cn.softsum.base.BaseMvpActivity;
 
-public class DeggerTestActivity extends BaseMvpActivity<CheckVersionPresenter> implements CheckVersionContract.ICheckVersionView , View.OnClickListener{
+public class DaggerTestActivity extends BaseMvpActivity<CheckVersionPresenter> implements CheckVersionContract.ICheckVersionView , View.OnClickListener{
 
     private EditText editText;
     private TextView textView;
@@ -30,9 +33,12 @@ public class DeggerTestActivity extends BaseMvpActivity<CheckVersionPresenter> i
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_degger_test);
 
+        Human human = new Human();
+        human.action();
+
         NoHttp.initialize(this);
         mContext = this;
-        Log.d("DeggerTestActivity", "onCreate: thread");
+        Log.d("DaggerTestActivity", "onCreate: thread");
         textView = findViewById(R.id.version_text);
         editText = findViewById(R.id.version_url_edit_text);
         editText.setText("请输入url");
@@ -46,7 +52,10 @@ public class DeggerTestActivity extends BaseMvpActivity<CheckVersionPresenter> i
                 build().
                 inject(this);
 
+
+
     }
+
 
     @Override
     public void showVersion(String version) {

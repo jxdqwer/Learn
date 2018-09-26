@@ -1,7 +1,7 @@
-package com.softsum.jxd.learn.degger2Test.di;
+package com.softsum.jxd.learn.dagger2Test.di;
 
-import com.softsum.jxd.learn.degger2Test.CheckVersionContract;
-import com.softsum.jxd.learn.degger2Test.CheckVersionModel;
+import com.softsum.jxd.learn.dagger2Test.CheckVersionContract;
+import com.softsum.jxd.learn.dagger2Test.CheckVersionModel;
 
 import dagger.Module;
 import dagger.Provides;
@@ -11,6 +11,7 @@ import dagger.Provides;
  * @date 2018/9/17-16:48
  * @blog www.softsum.cn
  */
+
 @Module
 public class CheckVersionModule {
 

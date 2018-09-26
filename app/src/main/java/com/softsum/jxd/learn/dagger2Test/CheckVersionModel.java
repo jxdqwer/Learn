@@ -1,7 +1,6 @@
-package com.softsum.jxd.learn.degger2Test;
+package com.softsum.jxd.learn.dagger2Test;
 
 import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 
 import com.yanzhenjie.nohttp.NoHttp;

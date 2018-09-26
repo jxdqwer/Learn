@@ -1,6 +1,6 @@
-package com.softsum.jxd.learn.degger2Test.di;
+package com.softsum.jxd.learn.dagger2Test.di;
 
-import com.softsum.jxd.learn.degger2Test.DeggerTestActivity;
+import com.softsum.jxd.learn.dagger2Test.DaggerTestActivity;
 
 import dagger.Component;
 
@@ -11,5 +11,5 @@ import dagger.Component;
  */
 @Component(modules = CheckVersionModule.class)
 public interface CheckVersionComponent {
-    void inject(DeggerTestActivity deggerTestActivity);
+    void inject(DaggerTestActivity daggerTestActivity);
 }

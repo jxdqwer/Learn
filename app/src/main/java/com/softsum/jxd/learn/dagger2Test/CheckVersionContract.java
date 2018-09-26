@@ -1,4 +1,4 @@
-package com.softsum.jxd.learn.degger2Test;
+package com.softsum.jxd.learn.dagger2Test;
 
 import android.os.Handler;
 
