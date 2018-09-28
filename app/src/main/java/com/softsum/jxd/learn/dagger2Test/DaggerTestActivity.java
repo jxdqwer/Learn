@@ -33,8 +33,8 @@ public class DaggerTestActivity extends BaseMvpActivity<CheckVersionPresenter> i
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_degger_test);
 
-        Human human = new Human();
-        human.action();
+//        Human human = new Human();
+//        human.action();
 
         NoHttp.initialize(this);
         mContext = this;

@@ -12,6 +12,9 @@ public class Human {
     @Inject
     Eat eat;
 
+    public Human(){
+        Log.d(TAG, "Human: create");
+    }
     public void action(){
         DaggerHumanComponent.create().inject(this);
         Log.d(TAG, "action: " +

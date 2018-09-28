@@ -55,7 +55,7 @@ public class DynamicDex extends AppCompatActivity implements View.OnClickListene
         //下面开始加载dex class
         DexClassLoader dexClassLoader = new DexClassLoader(internalPath, cacheFile.getAbsolutePath(), null, getClassLoader());
         try {
-            Class libClazz = dexClassLoader.loadClass("com.softsum.jxd.learn.dynamic.impl.DynamicDexTest");
+            Class libClazz = dexClassLoader.loadClass("com.softsum.jxd.learn.dynamic.impl.DynamicTestImpl");
             dynamic = (DynamicTestIn) libClazz.newInstance();
             if (dynamic != null)
                 Toast.makeText(this, dynamic.DynamicDexTestCode(), Toast.LENGTH_LONG).show();
